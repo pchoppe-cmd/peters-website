@@ -6,6 +6,7 @@ const UNIT_CATEGORIES = {
     // factors convert 1 unit -> meters (the base unit)
     units: {
       mile: { label: 'Miles', factor: 1609.344 },
+      nautical_mile: { label: 'Nautical miles', factor: 1852 },
       kilometer: { label: 'Kilometers', factor: 1000 },
       meter: { label: 'Meters', factor: 1 },
       centimeter: { label: 'Centimeters', factor: 0.01 },

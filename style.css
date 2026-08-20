@@ -446,7 +446,7 @@ button:disabled { opacity: 0.6; cursor: not-allowed; }
 .category-tabs {
   display: flex;
   gap: 6px;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   margin-top: 12px;
 }
 
@@ -457,7 +457,8 @@ button:disabled { opacity: 0.6; cursor: not-allowed; }
   font-weight: 600;
   padding: 8px 10px;
   font-size: 0.82rem;
-  flex: 1;
+  flex: 1 1 auto;
+  min-width: 72px;
   white-space: nowrap;
 }
 

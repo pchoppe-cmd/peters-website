@@ -188,7 +188,7 @@ main {
 }
 
 .col-separated {
-  margin-right: 60px;
+  margin-right: 100px;
 }
 
 @media (max-width: 1000px) {
@@ -454,6 +454,7 @@ button:disabled { opacity: 0.6; cursor: not-allowed; }
   gap: 6px;
   flex-wrap: wrap;
   margin-top: 12px;
+  margin-bottom: 18px;
 }
 
 .category-tabs button {

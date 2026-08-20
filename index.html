@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Peter's Website</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="index.html">Peter's Website</a>
+    <nav class="bubble-nav">
+      <a href="#scrambler">Word Scrambler</a>
+      <a href="#currency">Currency Converter</a>
+      <a href="#measurement">Unit Converter</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<div class="page-grid">
+
+  <!-- ============ WORD SCRAMBLER ============ -->
+  <section id="scrambler">
+    <div class="intro">
+      <span class="section-badge">Word Scrambler</span>
+      <h1 class="page-title">Find valid words from your letters</h1>
+      <p class="page-subtitle">Type in a jumble of letters and find every valid word you can make from them.</p>
+    </div>
+
+    <div class="card" id="scrambler-card">
+      <label for="letters-input">Letters</label>
+      <div class="row">
+        <div class="field">
+          <input type="text" id="letters-input" placeholder="e.g. taencri" autocomplete="off" spellcheck="false">
+        </div>
+        <button id="scramble-btn">Find words</button>
+      </div>
+      <div class="hint">Letters only, spaces are ignored. Case doesn't matter.</div>
+      <div class="row" style="margin-top:14px;">
+        <div class="field" style="max-width:220px;">
+          <label for="min-length">Minimum word length</label>
+          <select id="min-length">
+            <option value="1">1 letter</option>
+            <option value="2" selected>2 letters</option>
+            <option value="3">3 letters</option>
+            <option value="4">4 letters</option>
+            <option value="5">5 letters</option>
+          </select>
+        </div>
+        <div class="field" style="max-width:220px;">
+          <label for="max-length">Maximum word length</label>
+          <select id="max-length">
+            <option value="1">1 letter</option>
+            <option value="2">2 letters</option>
+            <option value="3">3 letters</option>
+            <option value="4">4 letters</option>
+            <option value="5">5 letters</option>
+            <option value="6">6 letters</option>
+            <option value="7">7 letters</option>
+            <option value="8">8 letters</option>
+            <option value="9">9 letters</option>
+            <option value="10" selected>10 letters</option>
+          </select>
+        </div>
+      </div>
+      <div class="error" id="scramble-error"></div>
+    </div>
+
+    <div class="card" id="results-card" style="display:none;">
+      <div class="result-count" id="result-count"></div>
+      <div class="word-list" id="word-list"></div>
+    </div>
+  </section>
+
+  <!-- ============ CURRENCY CONVERTER ============ -->
+  <section id="currency">
+    <div class="intro">
+      <span class="section-badge">Currency Converter</span>
+      <h1 class="page-title">Convert between currencies</h1>
+      <p class="page-subtitle">Live exchange rates, updated daily.</p>
+    </div>
+
+    <div class="card" id="currency-card">
+      <div class="row">
+        <div class="field">
+          <label for="amount">Amount</label>
+          <input type="number" id="amount" value="1" min="0" step="any">
+        </div>
+        <div class="field">
+          <label for="from-currency">From</label>
+          <select id="from-currency"></select>
+        </div>
+        <button type="button" class="swap-btn" id="swap-btn" title="Swap currencies">⇄</button>
+        <div class="field">
+          <label for="to-currency">To</label>
+          <select id="to-currency"></select>
+        </div>
+      </div>
+      <div class="error" id="currency-error"></div>
+    </div>
+
+    <div class="card" id="result-card" style="display:none;">
+      <div class="big-result" id="conversion-result"></div>
+      <div class="result-sub" id="rate-detail"></div>
+    </div>
+  </section>
+
+  <!-- ============ MEASUREMENT / UNIT CONVERTER ============ -->
+  <section id="measurement">
+    <div class="intro">
+      <span class="section-badge">Unit Converter</span>
+      <h1 class="page-title">Convert measurements</h1>
+      <p class="page-subtitle">Length, weight, temperature and volume — e.g. litres to gallons.</p>
+      <div class="category-tabs" id="unit-category-tabs">
+        <button type="button" data-category="length">Length</button>
+        <button type="button" data-category="weight">Weight</button>
+        <button type="button" data-category="temperature">Temperature</button>
+        <button type="button" data-category="volume" class="active">Volume</button>
+      </div>
+    </div>
+
+    <div class="card" id="measurement-card">
+      <div class="row">
+        <div class="field">
+          <label for="unit-value">Value</label>
+          <input type="number" id="unit-value" value="1" step="any">
+        </div>
+        <div class="field">
+          <label for="unit-from">From</label>
+          <select id="unit-from"></select>
+        </div>
+        <button type="button" class="swap-btn" id="unit-swap-btn" title="Swap units">⇄</button>
+        <div class="field">
+          <label for="unit-to">To</label>
+          <select id="unit-to"></select>
+        </div>
+      </div>
+      <div class="error" id="unit-error"></div>
+    </div>
+
+    <div class="card" id="unit-result-card" style="display:none;">
+      <div class="big-result" id="unit-result"></div>
+      <div class="result-sub" id="unit-rate-detail"></div>
+    </div>
+  </section>
+
+</div>
+</main>
+
+<footer class="site-footer">Built for Peter · word list: ENABLE1 (~172,000 words) · currency rates via frankfurter.app</footer>
+
+<script src="nav.js"></script>
+<script src="words.js"></script>
+<script type="module" src="scrambler.js"></script>
+<script type="module" src="currency.js"></script>
+<script type="module" src="measurement.js"></script>
+</body>
+</html>

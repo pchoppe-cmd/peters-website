@@ -60,6 +60,18 @@ const UNIT_CATEGORIES = {
     defaultFrom: 'liter',
     defaultTo: 'gallon_uk',
   },
+  speed: {
+    label: 'Speed',
+    // factors convert 1 unit -> km/h (the base unit)
+    units: {
+      kmh: { label: 'km/h', factor: 1 },
+      mph: { label: 'mph', factor: 1.609344 },
+      ms: { label: 'm/s', factor: 3.6 },
+      knot: { label: 'Knots', factor: 1.852 },
+    },
+    defaultFrom: 'mph',
+    defaultTo: 'kmh',
+  },
 };
 
 const categoryTabs = document.getElementById('unit-category-tabs');

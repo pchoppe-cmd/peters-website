@@ -364,10 +364,26 @@ button:disabled { opacity: 0.6; cursor: not-allowed; }
 }
 
 footer.site-footer {
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  max-width: 1440px;
+  margin: 0 auto;
   padding: 24px;
   color: var(--muted);
   font-size: 0.85rem;
+}
+
+footer.site-footer a {
+  color: var(--muted);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+footer.site-footer a:hover {
+  color: var(--accent);
 }
 
 .spinner {

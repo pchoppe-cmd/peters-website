@@ -164,7 +164,7 @@ main {
 
 .page-grid {
   display: grid;
-  grid-template-columns: 3fr 2fr;
+  grid-template-columns: 2fr 1fr;
   gap: 60px;
   align-items: start;
 }
@@ -172,6 +172,61 @@ main {
 .col-right {
   display: flex;
   flex-direction: column;
+}
+
+.col-right .page-title {
+  font-size: 1.25rem;
+}
+
+.col-right .page-subtitle {
+  font-size: 0.85rem;
+}
+
+.col-right .card {
+  padding: 16px;
+}
+
+.col-right input[type="text"],
+.col-right input[type="number"],
+.col-right select {
+  padding: 9px 12px;
+  font-size: 0.9rem;
+}
+
+.col-right label {
+  font-size: 0.78rem;
+}
+
+.col-right .row {
+  gap: 10px;
+}
+
+.col-right .field {
+  min-width: 110px;
+}
+
+.col-right button {
+  padding: 9px 14px;
+  font-size: 0.88rem;
+}
+
+.col-right .swap-btn {
+  width: 38px;
+  height: 38px;
+}
+
+.col-right .category-tabs button {
+  padding: 6px 8px;
+  font-size: 0.76rem;
+}
+
+.col-right .result-to,
+.col-right .big-result {
+  font-size: 1.6rem;
+}
+
+.col-right .result-from {
+  font-size: 0.9rem;
 }
 
 .col-divider {

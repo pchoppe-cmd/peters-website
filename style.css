@@ -188,7 +188,11 @@ main {
 }
 
 .tool-section.col-separated {
-  margin-right: 110px;
+  margin-right: -6px;
+}
+
+#currency {
+  margin-right: -20px;
 }
 
 @media (max-width: 1000px) {
@@ -200,6 +204,10 @@ main {
     grid-column: 1 / -1;
     margin-right: -6px;
     margin-bottom: 14px;
+  }
+
+  #currency {
+    margin-right: -6px;
   }
 }
 

@@ -187,8 +187,8 @@ main {
   align-items: start;
 }
 
-.col-separated {
-  margin-right: 70px;
+.tool-section.col-separated {
+  margin-right: 110px;
 }
 
 @media (max-width: 1000px) {
@@ -196,10 +196,10 @@ main {
     grid-template-columns: 1fr 1fr;
   }
 
-  .col-separated {
+  .tool-section.col-separated {
     grid-column: 1 / -1;
-    margin-right: 0;
-    margin-bottom: 8px;
+    margin-right: -6px;
+    margin-bottom: 14px;
   }
 }
 
@@ -209,8 +209,8 @@ main {
     gap: 0;
   }
 
-  .col-separated {
-    margin-bottom: 0;
+  .tool-section.col-separated {
+    margin-bottom: -6px;
   }
 }
 

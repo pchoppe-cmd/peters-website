@@ -22,8 +22,41 @@
 <main>
 <div class="page-grid">
 
+  <!-- ============ CURRENCY CONVERTER ============ -->
+  <section id="currency" class="tool-section">
+    <div class="intro">
+      <span class="section-badge">Currency Converter</span>
+      <h1 class="page-title">Convert between currencies</h1>
+      <p class="page-subtitle">Live exchange rates, updated daily.</p>
+    </div>
+
+    <div class="card" id="currency-card">
+      <div class="row">
+        <div class="field">
+          <label for="amount">Amount</label>
+          <input type="number" id="amount" value="1" min="0" step="any">
+        </div>
+        <div class="field">
+          <label for="from-currency">From</label>
+          <select id="from-currency"></select>
+        </div>
+        <button type="button" class="swap-btn" id="swap-btn" title="Swap currencies">⇄</button>
+        <div class="field">
+          <label for="to-currency">To</label>
+          <select id="to-currency"></select>
+        </div>
+      </div>
+      <div class="error" id="currency-error"></div>
+    </div>
+
+    <div class="card" id="result-card" style="display:none;">
+      <div class="big-result" id="conversion-result"></div>
+      <div class="result-sub" id="rate-detail"></div>
+    </div>
+  </section>
+
   <!-- ============ WORD SCRAMBLER ============ -->
-  <section id="scrambler">
+  <section id="scrambler" class="tool-section">
     <div class="intro">
       <span class="section-badge">Word Scrambler</span>
       <h1 class="page-title">Find valid words from your letters</h1>
@@ -75,41 +108,8 @@
     </div>
   </section>
 
-  <!-- ============ CURRENCY CONVERTER ============ -->
-  <section id="currency">
-    <div class="intro">
-      <span class="section-badge">Currency Converter</span>
-      <h1 class="page-title">Convert between currencies</h1>
-      <p class="page-subtitle">Live exchange rates, updated daily.</p>
-    </div>
-
-    <div class="card" id="currency-card">
-      <div class="row">
-        <div class="field">
-          <label for="amount">Amount</label>
-          <input type="number" id="amount" value="1" min="0" step="any">
-        </div>
-        <div class="field">
-          <label for="from-currency">From</label>
-          <select id="from-currency"></select>
-        </div>
-        <button type="button" class="swap-btn" id="swap-btn" title="Swap currencies">⇄</button>
-        <div class="field">
-          <label for="to-currency">To</label>
-          <select id="to-currency"></select>
-        </div>
-      </div>
-      <div class="error" id="currency-error"></div>
-    </div>
-
-    <div class="card" id="result-card" style="display:none;">
-      <div class="big-result" id="conversion-result"></div>
-      <div class="result-sub" id="rate-detail"></div>
-    </div>
-  </section>
-
   <!-- ============ MEASUREMENT / UNIT CONVERTER ============ -->
-  <section id="measurement">
+  <section id="measurement" class="tool-section">
     <div class="intro">
       <span class="section-badge">Unit Converter</span>
       <h1 class="page-title">Convert measurements</h1>

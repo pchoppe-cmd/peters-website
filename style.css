@@ -204,10 +204,17 @@ main {
   box-shadow: var(--shadow);
   padding: 20px;
   margin-bottom: 16px;
+}
+
+.tool-section {
+  border: 2px solid transparent;
+  border-radius: calc(var(--radius) + 6px);
+  padding: 6px;
+  margin: -6px;
   transition: border-color 0.15s ease, box-shadow 0.15s ease;
 }
 
-.card.box-active {
+.tool-section.section-active {
   border-color: #eab308;
   box-shadow: 0 0 0 3px rgba(234, 179, 8, 0.18), 0 0 22px rgba(234, 179, 8, 0.45);
 }

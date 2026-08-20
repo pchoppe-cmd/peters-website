@@ -7,6 +7,8 @@
   --accent: #4f46e5;
   --accent-hover: #4338ca;
   --accent-soft: #eef0ff;
+  --link: #2563eb;
+  --link-hover: #1d4ed8;
   --danger: #dc2626;
   --shadow: 0 1px 2px rgba(16, 24, 40, 0.06), 0 1px 3px rgba(16, 24, 40, 0.08);
   --radius: 12px;
@@ -22,11 +24,21 @@
     --accent: #818cf8;
     --accent-hover: #a5b4fc;
     --accent-soft: #2c3049;
+    --link: #60a5fa;
+    --link-hover: #93c5fd;
     --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 4px 12px rgba(0, 0, 0, 0.3);
   }
 }
 
 * { box-sizing: border-box; }
+
+a {
+  color: var(--link);
+}
+
+a:hover {
+  color: var(--link-hover);
+}
 
 html, body {
   margin: 0;
@@ -164,9 +176,36 @@ main {
 
 .page-grid {
   display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 60px;
+  grid-template-columns: 5fr 4fr 4fr;
+  gap: 40px;
   align-items: start;
+}
+
+.col-separated {
+  margin-right: 24px;
+}
+
+@media (max-width: 1000px) {
+  .page-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .col-separated {
+    grid-column: 1 / -1;
+    margin-right: 0;
+    margin-bottom: 8px;
+  }
+}
+
+@media (max-width: 700px) {
+  .page-grid {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .col-separated {
+    margin-bottom: 0;
+  }
 }
 
 .col-right {

@@ -149,7 +149,7 @@ function runConvert() {
   `;
 
   if (fromUnit === toUnit) {
-    rateDetailEl.textContent = 'Same unit — value is unchanged';
+    rateDetailEl.textContent = window.t('measurement_same_unit');
   } else if (currentCategory === 'temperature') {
     rateDetailEl.textContent = '';
   } else {
@@ -186,3 +186,6 @@ toSelect.addEventListener('change', runConvert);
 
 populateUnitSelects(currentCategory);
 runConvert();
+
+// Refresh displayed text (e.g. "Same unit") when the language changes.
+window.addEventListener('sd-lang-change', runConvert);

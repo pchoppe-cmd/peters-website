@@ -15,47 +15,54 @@
   <div class="header-inner">
     <a class="brand" href="index.html">Scrambledamble</a>
     <nav class="bubble-nav">
-      <a href="index.html">Back to site</a>
+      <a href="index.html" data-i18n="nav_back">Back to site</a>
     </nav>
+    <div class="lang-switch">
+      <button type="button" data-lang="en">EN</button>
+      <button type="button" data-lang="de">DE</button>
+      <button type="button" data-lang="fr">FR</button>
+      <button type="button" data-lang="es">ES</button>
+    </div>
   </div>
 </header>
 
 <main>
   <div style="max-width:720px; margin:0 auto;">
-    <span class="section-badge">About</span>
-    <h1 class="page-title">About this site</h1>
-    <p class="page-subtitle">A handful of small, free tools in one place.</p>
+    <span class="section-badge" data-i18n="about_badge">About</span>
+    <h1 class="page-title" data-i18n="about_title">About this site</h1>
+    <p class="page-subtitle" data-i18n="about_subtitle">A handful of small, free tools in one place.</p>
 
     <div class="card">
-      <p>This site brings together three simple, everyday tools: a Word Scrambler for finding valid words from a jumble of letters, a Currency Converter with live exchange rates, and a Unit Converter for length, weight, temperature and volume. No sign-up, no accounts — just open the page and use whichever tool you need.</p>
+      <p data-i18n="about_intro">This site brings together three simple, everyday tools: a Word Scrambler for finding valid words from a jumble of letters, a Currency Converter with live exchange rates, and a Unit Converter for length, weight, temperature and volume. No sign-up, no accounts — just open the page and use whichever tool you need.</p>
     </div>
 
     <div class="card">
-      <h2 style="margin-top:0;">Why it exists</h2>
-      <p>It started as a small personal project — a single page with a few genuinely useful tools, built to be fast, free, and free of clutter.</p>
+      <h2 style="margin-top:0;" data-i18n="about_why_heading">Why it exists</h2>
+      <p data-i18n="about_why_text">It started as a small personal project — a single page with a few genuinely useful tools, built to be fast, free, and free of clutter.</p>
     </div>
 
     <div class="card">
-      <h2 style="margin-top:0;">How it's built</h2>
-      <p>Plain HTML, CSS, and JavaScript — no frameworks, no tracking scripts, no build step. The Word Scrambler runs entirely offline using a ~172,000-word dictionary (ENABLE1). The Currency Converter fetches live rates from the free <a href="https://frankfurter.dev" target="_blank" rel="noopener">frankfurter.dev</a> API.</p>
+      <h2 style="margin-top:0;" data-i18n="about_built_heading">How it's built</h2>
+      <p data-i18n-html="about_built_html">Plain HTML, CSS, and JavaScript — no frameworks, no tracking scripts, no build step. The Word Scrambler runs entirely offline using a ~172,000-word dictionary (ENABLE1). The Currency Converter fetches live rates from the free <a href="https://frankfurter.dev" target="_blank" rel="noopener">frankfurter.dev</a> API.</p>
     </div>
 
     <div class="card">
-      <h2 style="margin-top:0;">Feedback</h2>
-      <p>Spotted a bug or have an idea for another tool? Get in touch at <a href="mailto:pchoppetech@gmail.com">pchoppetech@gmail.com</a>.</p>
+      <h2 style="margin-top:0;" data-i18n="about_feedback_heading">Feedback</h2>
+      <p data-i18n-html="about_feedback_html">Spotted a bug or have an idea for another tool? Get in touch at <a href="mailto:pchoppetech@gmail.com">pchoppetech@gmail.com</a>.</p>
     </div>
   </div>
 </main>
 
 <footer class="site-footer">
   <div class="footer-inner">
-    <span>Built for all people of the internet · word list: ENABLE1 (~172,000 words) · currency rates via frankfurter.app</span>
+    <span data-i18n="footer_tagline">Built for all people of the internet · word list: ENABLE1 (~172,000 words) · currency rates via frankfurter.app</span>
     <div class="footer-links">
-      <a href="privacy.html">Privacy Policy</a>
-      <a href="about.html">About</a>
+      <a href="privacy.html" data-i18n="footer_privacy">Privacy Policy</a>
+      <a href="about.html" data-i18n="footer_about">About</a>
     </div>
   </div>
 </footer>
 
+<script src="i18n.js"></script>
 </body>
 </html>

@@ -58,12 +58,12 @@ async function convert() {
   if (from === to) {
     resultCard.style.display = 'block';
     resultEl.textContent = `${amount.toLocaleString()} ${from} = ${amount.toLocaleString()} ${to}`;
-    rateDetailEl.textContent = 'Same currency — rate is 1:1';
+    rateDetailEl.textContent = window.t('currency_same');
     return;
   }
 
   resultCard.style.display = 'block';
-  resultEl.innerHTML = '<span class="spinner"></span>Converting…';
+  resultEl.innerHTML = `<span class="spinner"></span>${window.t('currency_converting')}`;
   rateDetailEl.textContent = '';
 
   try {
@@ -74,10 +74,10 @@ async function convert() {
     const rate = converted / amount;
 
     resultEl.textContent = `${amount.toLocaleString()} ${from} = ${converted.toLocaleString(undefined, { maximumFractionDigits: 4 })} ${to}`;
-    rateDetailEl.textContent = `1 ${from} = ${rate.toLocaleString(undefined, { maximumFractionDigits: 6 })} ${to} · rates as of ${data.date}`;
+    rateDetailEl.textContent = `1 ${from} = ${rate.toLocaleString(undefined, { maximumFractionDigits: 6 })} ${to} · ${window.t('currency_rate_as_of')} ${data.date}`;
   } catch (err) {
     resultCard.style.display = 'none';
-    errorEl.textContent = 'Could not fetch exchange rates. Check your internet connection and try again.';
+    errorEl.textContent = window.t('currency_error_fetch');
   }
 }
 
@@ -94,3 +94,6 @@ toSelect.addEventListener('change', convert);
 
 populateSelects();
 convert();
+
+// Refresh displayed text (e.g. "rates as of") when the language changes.
+window.addEventListener('sd-lang-change', convert);

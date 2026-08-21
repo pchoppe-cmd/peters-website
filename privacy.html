@@ -15,63 +15,70 @@
   <div class="header-inner">
     <a class="brand" href="index.html">Scrambledamble</a>
     <nav class="bubble-nav">
-      <a href="index.html">Back to site</a>
+      <a href="index.html" data-i18n="nav_back">Back to site</a>
     </nav>
+    <div class="lang-switch">
+      <button type="button" data-lang="en">EN</button>
+      <button type="button" data-lang="de">DE</button>
+      <button type="button" data-lang="fr">FR</button>
+      <button type="button" data-lang="es">ES</button>
+    </div>
   </div>
 </header>
 
 <main>
   <div style="max-width:720px; margin:0 auto;">
-    <span class="section-badge">Legal</span>
-    <h1 class="page-title">Privacy Policy</h1>
-    <p class="page-subtitle">Last updated: 20 August 2026</p>
+    <span class="section-badge" data-i18n="privacy_badge">Legal</span>
+    <h1 class="page-title" data-i18n="privacy_title">Privacy Policy</h1>
+    <p class="page-subtitle" data-i18n="privacy_last_updated">Last updated: 20 August 2026</p>
 
     <div class="card">
-      <p>This page explains what happens to your data when you use this website. In short: this site does not require an account, does not collect personal information through forms, and does not store anything about you on a server.</p>
+      <p data-i18n="privacy_intro">This page explains what happens to your data when you use this website. In short: this site does not require an account, does not collect personal information through forms, and does not store anything about you on a server.</p>
     </div>
 
     <div class="card">
-      <h2 style="margin-top:0;">Information this site collects</h2>
-      <p>None of the tools on this site ask you to create an account, log in, or submit personal details. Anything you type — letters for the Word Scrambler, amounts for the Currency Converter, values for the Unit Converter — is processed in your own browser and is not sent to us or stored anywhere.</p>
+      <h2 style="margin-top:0;" data-i18n="privacy_collect_heading">Information this site collects</h2>
+      <p data-i18n="privacy_collect_text">None of the tools on this site ask you to create an account, log in, or submit personal details. Anything you type — letters for the Word Scrambler, amounts for the Currency Converter, values for the Unit Converter — is processed in your own browser and is not sent to us or stored anywhere.</p>
     </div>
 
     <div class="card">
-      <h2 style="margin-top:0;">Third-party services</h2>
-      <p>The Currency Converter fetches live exchange rates from <a href="https://frankfurter.dev" target="_blank" rel="noopener">frankfurter.dev</a>, a free public API. Only the currency codes and amount you enter are sent in that request — no personal information is included or required.</p>
-      <p>If this site displays advertising (e.g. via Google AdSense), the ad provider may use cookies or similar technology to serve and measure ads, which can include collecting information about your device and browsing activity across sites. You can control this through your browser settings or via <a href="https://adssettings.google.com" target="_blank" rel="noopener">Google's Ads Settings</a>.</p>
+      <h2 style="margin-top:0;" data-i18n="privacy_third_heading">Third-party services</h2>
+      <p data-i18n-html="privacy_third_text1_html">The Currency Converter fetches live exchange rates from <a href="https://frankfurter.dev" target="_blank" rel="noopener">frankfurter.dev</a>, a free public API. Only the currency codes and amount you enter are sent in that request — no personal information is included or required.</p>
+      <p data-i18n-html="privacy_third_text2_html">If this site displays advertising (e.g. via Google AdSense), the ad provider may use cookies or similar technology to serve and measure ads, which can include collecting information about your device and browsing activity across sites. You can control this through your browser settings or via <a href="https://adssettings.google.com" target="_blank" rel="noopener">Google's Ads Settings</a>.</p>
     </div>
 
     <div class="card">
-      <h2 style="margin-top:0;">Cookies</h2>
-      <p>This site itself does not set cookies. If advertising is enabled, the ad provider may set cookies as described above.</p>
+      <h2 style="margin-top:0;" data-i18n="privacy_cookies_heading">Cookies</h2>
+      <p data-i18n="privacy_cookies_text">This site itself does not set cookies. If advertising is enabled, the ad provider may set cookies as described above.</p>
     </div>
 
     <div class="card">
-      <h2 style="margin-top:0;">Children's privacy</h2>
-      <p>This site is not directed at children and does not knowingly collect information from anyone.</p>
+      <h2 style="margin-top:0;" data-i18n="privacy_children_heading">Children's privacy</h2>
+      <p data-i18n="privacy_children_text">This site is not directed at children and does not knowingly collect information from anyone.</p>
     </div>
 
     <div class="card">
-      <h2 style="margin-top:0;">Changes to this policy</h2>
-      <p>This policy may be updated from time to time, for example if advertising or analytics are added to the site. Changes will be posted on this page.</p>
+      <h2 style="margin-top:0;" data-i18n="privacy_changes_heading">Changes to this policy</h2>
+      <p data-i18n="privacy_changes_text">This policy may be updated from time to time, for example if advertising or analytics are added to the site. Changes will be posted on this page.</p>
     </div>
 
     <div class="card">
-      <h2 style="margin-top:0;">Contact</h2>
-      <p>Questions about this policy can be sent to <a href="mailto:pchoppe@icloud.com">pchoppe@icloud.com</a>.</p>
+      <h2 style="margin-top:0;" data-i18n="privacy_contact_heading">Contact</h2>
+      <p data-i18n-html="privacy_contact_html">Questions about this policy can be sent to <a href="mailto:pchoppe@icloud.com">pchoppe@icloud.com</a>.</p>
     </div>
   </div>
 </main>
 
 <footer class="site-footer">
   <div class="footer-inner">
-    <span>Built for all people of the internet · word list: ENABLE1 (~172,000 words) · currency rates via frankfurter.app</span>
+    <span data-i18n="footer_tagline">Built for all people of the internet · word list: ENABLE1 (~172,000 words) · currency rates via frankfurter.app</span>
     <div class="footer-links">
-      <a href="privacy.html">Privacy Policy</a>
-      <a href="about.html">About</a>
+      <a href="privacy.html" data-i18n="footer_privacy">Privacy Policy</a>
+      <a href="about.html" data-i18n="footer_about">About</a>
     </div>
   </div>
 </footer>
 
+<script src="i18n.js"></script>
 </body>
 </html>

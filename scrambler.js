@@ -29,9 +29,9 @@ function canFormWord(word, availableCounts) {
 
 function findWords(rawInput, minLength, maxLength) {
   const cleaned = rawInput.toLowerCase().replace(/[^a-z]/g, '');
-  if (!cleaned) return { error: 'Please enter some letters (a-z only).', words: [] };
-  if (cleaned.length > 24) return { error: 'That\'s a lot of letters — try 24 or fewer.', words: [] };
-  if (minLength > maxLength) return { error: 'Minimum word length can\'t be greater than maximum word length.', words: [] };
+  if (!cleaned) return { error: window.t('scrambler_error_no_letters'), words: [] };
+  if (cleaned.length > 24) return { error: window.t('scrambler_error_too_long'), words: [] };
+  if (minLength > maxLength) return { error: window.t('scrambler_error_min_max'), words: [] };
 
   const available = letterCounts(cleaned);
   const found = [];
@@ -51,11 +51,13 @@ function render(words) {
   wordListEl.innerHTML = '';
   if (words.length === 0) {
     resultsCard.style.display = 'block';
-    resultCountEl.textContent = 'No valid words found for those letters.';
+    resultCountEl.textContent = window.t('scrambler_no_words');
     return;
   }
   resultsCard.style.display = 'block';
-  resultCountEl.textContent = `${words.length} word${words.length === 1 ? '' : 's'} found`;
+  resultCountEl.textContent = words.length === 1
+    ? window.t('scrambler_word_found_singular')
+    : window.t('scrambler_words_found', { n: words.length });
   const frag = document.createDocumentFragment();
   for (const w of words) {
     const chip = document.createElement('span');
@@ -82,4 +84,10 @@ function runSearch() {
 scrambleBtn.addEventListener('click', runSearch);
 lettersInput.addEventListener('keydown', (e) => {
   if (e.key === 'Enter') runSearch();
+});
+
+// Re-run the search on language change so result text (e.g. "12 words found")
+// updates to the new language, if a search is already showing.
+window.addEventListener('sd-lang-change', () => {
+  if (resultsCard.style.display === 'block' || errorEl.textContent) runSearch();
 });

@@ -87,6 +87,13 @@ header.site-header {
   gap: 12px;
 }
 
+.header-right {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
 .brand {
   font-family: 'Baloo 2', 'Segoe UI', sans-serif;
   font-weight: 700;

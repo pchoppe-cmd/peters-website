@@ -108,23 +108,39 @@ function convertValue(value, fromUnit, toUnit, category) {
   return baseValue / units[toUnit].factor;
 }
 
+function unitLabel(category, unitKey) {
+  return window.t('unit_' + unitKey);
+}
+
 function populateUnitSelects(category) {
   const { units, defaultFrom, defaultTo } = UNIT_CATEGORIES[category];
   fromSelect.innerHTML = '';
   toSelect.innerHTML = '';
-  for (const [key, def] of Object.entries(units)) {
+  for (const key of Object.keys(units)) {
     const opt1 = document.createElement('option');
     opt1.value = key;
-    opt1.textContent = def.label;
+    opt1.textContent = unitLabel(category, key);
     fromSelect.appendChild(opt1);
 
     const opt2 = document.createElement('option');
     opt2.value = key;
-    opt2.textContent = def.label;
+    opt2.textContent = unitLabel(category, key);
     toSelect.appendChild(opt2);
   }
   fromSelect.value = defaultFrom;
   toSelect.value = defaultTo;
+}
+
+// Refresh option labels in place (keeping the current selection) when the
+// language changes, instead of resetting back to the category defaults.
+function refreshUnitLabels() {
+  const keepFrom = fromSelect.value;
+  const keepTo = toSelect.value;
+  document.querySelectorAll('#unit-from option, #unit-to option').forEach((opt) => {
+    opt.textContent = unitLabel(currentCategory, opt.value);
+  });
+  fromSelect.value = keepFrom;
+  toSelect.value = keepTo;
 }
 
 function runConvert() {
@@ -139,8 +155,8 @@ function runConvert() {
   const fromUnit = fromSelect.value;
   const toUnit = toSelect.value;
   const result = convertValue(value, fromUnit, toUnit, currentCategory);
-  const fromLabel = UNIT_CATEGORIES[currentCategory].units[fromUnit].label;
-  const toLabel = UNIT_CATEGORIES[currentCategory].units[toUnit].label;
+  const fromLabel = unitLabel(currentCategory, fromUnit);
+  const toLabel = unitLabel(currentCategory, toUnit);
 
   resultCard.style.display = 'block';
   resultEl.innerHTML = `
@@ -188,4 +204,7 @@ populateUnitSelects(currentCategory);
 runConvert();
 
 // Refresh displayed text (e.g. "Same unit") when the language changes.
-window.addEventListener('sd-lang-change', runConvert);
+window.addEventListener('sd-lang-change', () => {
+  refreshUnitLabels();
+  runConvert();
+});

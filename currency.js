@@ -1,17 +1,14 @@
 // Currency Converter logic — uses the free frankfurter.app API (ECB reference rates)
 
-const CURRENCIES = {
-  AUD: "Australian Dollar", BRL: "Brazilian Real", CAD: "Canadian Dollar",
-  CHF: "Swiss Franc", CNY: "Chinese Renminbi Yuan", CZK: "Czech Koruna",
-  DKK: "Danish Krone", EUR: "Euro", GBP: "British Pound", HKD: "Hong Kong Dollar",
-  HUF: "Hungarian Forint", IDR: "Indonesian Rupiah", ILS: "Israeli New Shekel",
-  INR: "Indian Rupee", ISK: "Icelandic Krona", JPY: "Japanese Yen",
-  KRW: "South Korean Won", MXN: "Mexican Peso", MYR: "Malaysian Ringgit",
-  NOK: "Norwegian Krone", NZD: "New Zealand Dollar", PHP: "Philippine Peso",
-  PLN: "Polish Zloty", RON: "Romanian Leu", SEK: "Swedish Krona",
-  SGD: "Singapore Dollar", THB: "Thai Baht", TRY: "Turkish Lira",
-  USD: "United States Dollar", ZAR: "South African Rand"
-};
+const CURRENCY_CODES = [
+  "AUD", "BRL", "CAD", "CHF", "CNY", "CZK", "DKK", "EUR", "GBP", "HKD",
+  "HUF", "IDR", "ILS", "INR", "ISK", "JPY", "KRW", "MXN", "MYR", "NOK",
+  "NZD", "PHP", "PLN", "RON", "SEK", "SGD", "THB", "TRY", "USD", "ZAR",
+];
+
+function currencyLabel(code) {
+  return `${code} — ${window.t('currency_name_' + code)}`;
+}
 
 const amountInput = document.getElementById('amount');
 const fromSelect = document.getElementById('from-currency');
@@ -23,19 +20,31 @@ const resultEl = document.getElementById('conversion-result');
 const rateDetailEl = document.getElementById('rate-detail');
 
 function populateSelects() {
-  for (const [code, name] of Object.entries(CURRENCIES)) {
+  for (const code of CURRENCY_CODES) {
     const opt1 = document.createElement('option');
     opt1.value = code;
-    opt1.textContent = `${code} — ${name}`;
+    opt1.textContent = currencyLabel(code);
     fromSelect.appendChild(opt1);
 
     const opt2 = document.createElement('option');
     opt2.value = code;
-    opt2.textContent = `${code} — ${name}`;
+    opt2.textContent = currencyLabel(code);
     toSelect.appendChild(opt2);
   }
   fromSelect.value = 'EUR';
   toSelect.value = 'GBP';
+}
+
+// Refresh option labels in place (keeping the current selection) when the
+// language changes, instead of resetting back to the defaults.
+function refreshCurrencyLabels() {
+  const keepFrom = fromSelect.value;
+  const keepTo = toSelect.value;
+  document.querySelectorAll('#from-currency option, #to-currency option').forEach((opt) => {
+    opt.textContent = currencyLabel(opt.value);
+  });
+  fromSelect.value = keepFrom;
+  toSelect.value = keepTo;
 }
 
 let debounceTimer = null;
@@ -96,4 +105,7 @@ populateSelects();
 convert();
 
 // Refresh displayed text (e.g. "rates as of") when the language changes.
-window.addEventListener('sd-lang-change', convert);
+window.addEventListener('sd-lang-change', () => {
+  refreshCurrencyLabels();
+  convert();
+});

@@ -1,5 +1,5 @@
 :root {
-  --bg: #f8f8fc;
+  --bg: #f6f7fb;
   --panel: #ffffff;
   --text: #1c1e26;
   --muted: #667085;
@@ -12,27 +12,21 @@
   --danger: #dc2626;
   --shadow: 0 1px 2px rgba(16, 24, 40, 0.06), 0 1px 3px rgba(16, 24, 40, 0.08);
   --radius: 12px;
-  --glow-1: radial-gradient(ellipse 900px 520px at 12% -12%, rgba(129, 140, 248, 0.07), transparent 60%);
-  --glow-2: radial-gradient(ellipse 800px 600px at 100% 8%, rgba(244, 114, 182, 0.05), transparent 55%);
-  --noise: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.035 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #24273b;
-    --panel: #2b2e42;
+    --bg: #1c1e29;
+    --panel: #262835;
     --text: #eef0f6;
     --muted: #a8afc2;
-    --border: #3d4159;
+    --border: #383c4e;
     --accent: #818cf8;
     --accent-hover: #a5b4fc;
     --accent-soft: #2c3049;
     --link: #60a5fa;
     --link-hover: #93c5fd;
     --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 4px 12px rgba(0, 0, 0, 0.3);
-    --glow-1: radial-gradient(ellipse 900px 520px at 12% -12%, rgba(129, 140, 248, 0.14), transparent 60%);
-    --glow-2: radial-gradient(ellipse 800px 600px at 100% 8%, rgba(244, 114, 182, 0.09), transparent 55%);
-    --noise: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   }
 }
 
@@ -57,10 +51,7 @@ html {
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  background-color: var(--bg);
-  background-image: var(--glow-1), var(--glow-2), var(--noise);
-  background-repeat: no-repeat, no-repeat, repeat;
-  background-attachment: fixed, fixed, fixed;
+  background: var(--bg);
   color: var(--text);
   min-height: 100vh;
   display: flex;

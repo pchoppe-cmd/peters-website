@@ -364,11 +364,6 @@ main {
   font-size: 0.95rem;
 }
 
-.intro .page-subtitle {
-  line-height: 1.4;
-  min-height: 2.8em;
-}
-
 .card {
   background: var(--panel);
   border: 1px solid var(--border);

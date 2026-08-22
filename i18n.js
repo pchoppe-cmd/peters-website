@@ -28,7 +28,7 @@ const I18N = {
 
     currency_badge: "Currency Converter",
     currency_title: "Convert between currencies",
-    currency_subtitle: "Live exchange rates, updated daily.",
+    currency_subtitle: "Live exchange rates between world currencies, updated daily.",
     label_amount: "Amount",
     label_from: "From",
     label_to: "To",
@@ -145,7 +145,7 @@ const I18N = {
 
     currency_badge: "Währungsrechner",
     currency_title: "Währungen umrechnen",
-    currency_subtitle: "Aktuelle Wechselkurse, täglich aktualisiert.",
+    currency_subtitle: "Aktuelle Wechselkurse zwischen Weltwährungen, täglich aktualisiert.",
     label_amount: "Betrag",
     label_from: "Von",
     label_to: "In",
@@ -262,7 +262,7 @@ const I18N = {
 
     currency_badge: "Convertisseur de devises",
     currency_title: "Convertir entre devises",
-    currency_subtitle: "Taux de change en direct, mis à jour quotidiennement.",
+    currency_subtitle: "Taux de change en direct entre devises mondiales, mis à jour chaque jour.",
     label_amount: "Montant",
     label_from: "De",
     label_to: "Vers",
@@ -379,7 +379,7 @@ const I18N = {
 
     currency_badge: "Conversor de divisas",
     currency_title: "Convertir entre divisas",
-    currency_subtitle: "Tipos de cambio en vivo, actualizados a diario.",
+    currency_subtitle: "Tipos de cambio en vivo entre divisas internacionales, actualizados a diario.",
     label_amount: "Importe",
     label_from: "De",
     label_to: "A",

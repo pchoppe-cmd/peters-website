@@ -518,6 +518,15 @@ button:disabled { opacity: 0.6; cursor: not-allowed; }
   flex: 1 1 auto;
   min-width: 72px;
   white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.cat-icon {
+  font-size: 0.9em;
+  line-height: 1;
 }
 
 .category-tabs button.active {

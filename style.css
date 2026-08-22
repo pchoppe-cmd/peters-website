@@ -141,6 +141,9 @@ nav.bubble-nav {
 }
 
 nav.bubble-nav a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   text-decoration: none;
   background: var(--panel);
   border: 1px solid var(--border);
@@ -150,6 +153,10 @@ nav.bubble-nav a {
   font-weight: 600;
   font-size: 0.9rem;
   transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+nav.bubble-nav a .cat-icon {
+  font-size: 1.05em;
 }
 
 nav.bubble-nav a:hover {
@@ -440,6 +447,29 @@ button:disabled { opacity: 0.6; cursor: not-allowed; }
   font-size: 0.85rem;
   color: var(--muted);
   margin-top: 6px;
+}
+
+.faq {
+  margin-top: 10px;
+  font-size: 0.82rem;
+}
+
+.faq summary {
+  cursor: pointer;
+  color: var(--accent);
+  font-weight: 600;
+  user-select: none;
+}
+
+.faq summary:hover {
+  color: var(--accent-hover);
+}
+
+.faq p {
+  margin: 6px 0 0;
+  padding-left: 2px;
+  color: var(--muted);
+  line-height: 1.45;
 }
 
 .error {

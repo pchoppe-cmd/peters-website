@@ -110,6 +110,13 @@ const I18N = {
     currency_name_SEK: "Swedish Krona", currency_name_SGD: "Singapore Dollar",
     currency_name_THB: "Thai Baht", currency_name_TRY: "Turkish Lira",
     currency_name_USD: "United States Dollar", currency_name_ZAR: "South African Rand",
+
+    scrambler_faq_q: "How does this work?",
+    scrambler_faq_a: "Type any letters and we'll check every possible combination against a dictionary of about 172,000 English words to find every valid word hidden inside them.",
+    currency_faq_q: "How does this work?",
+    currency_faq_a: "Enter an amount and choose two currencies — the live rate is fetched from the European Central Bank via the free frankfurter.dev API and the result updates instantly.",
+    measurement_faq_q: "How does this work?",
+    measurement_faq_a: "Pick a category like length or weight, choose your units, and enter a value — the conversion happens instantly using standard conversion factors.",
   },
 
   de: {
@@ -220,6 +227,13 @@ const I18N = {
     currency_name_SEK: "Schwedische Krone", currency_name_SGD: "Singapur-Dollar",
     currency_name_THB: "Thailändischer Baht", currency_name_TRY: "Türkische Lira",
     currency_name_USD: "US-Dollar", currency_name_ZAR: "Südafrikanischer Rand",
+
+    scrambler_faq_q: "Wie funktioniert das?",
+    scrambler_faq_a: "Gib beliebige Buchstaben ein — wir prüfen jede mögliche Kombination gegen ein Wörterbuch mit rund 172.000 englischen Wörtern, um jedes darin versteckte gültige Wort zu finden.",
+    currency_faq_q: "Wie funktioniert das?",
+    currency_faq_a: "Gib einen Betrag ein und wähle zwei Währungen — der aktuelle Kurs wird live von der Europäischen Zentralbank über die kostenlose frankfurter.dev-API abgerufen, das Ergebnis aktualisiert sich sofort.",
+    measurement_faq_q: "Wie funktioniert das?",
+    measurement_faq_a: "Wähle eine Kategorie wie Länge oder Gewicht, wähle deine Einheiten und gib einen Wert ein — die Umrechnung erfolgt sofort anhand gängiger Umrechnungsfaktoren.",
   },
 
   fr: {
@@ -330,6 +344,13 @@ const I18N = {
     currency_name_SEK: "Couronne suédoise", currency_name_SGD: "Dollar de Singapour",
     currency_name_THB: "Baht thaïlandais", currency_name_TRY: "Livre turque",
     currency_name_USD: "Dollar américain", currency_name_ZAR: "Rand sud-africain",
+
+    scrambler_faq_q: "Comment ça marche ?",
+    scrambler_faq_a: "Entrez n'importe quelles lettres — nous vérifions chaque combinaison possible dans un dictionnaire d'environ 172 000 mots anglais pour trouver tous les mots valides qui s'y cachent.",
+    currency_faq_q: "Comment ça marche ?",
+    currency_faq_a: "Entrez un montant et choisissez deux devises — le taux en direct est récupéré auprès de la Banque centrale européenne via l'API gratuite frankfurter.dev, le résultat se met à jour instantanément.",
+    measurement_faq_q: "Comment ça marche ?",
+    measurement_faq_a: "Choisissez une catégorie comme la longueur ou le poids, sélectionnez vos unités et saisissez une valeur — la conversion s'effectue instantanément à l'aide de facteurs de conversion standards.",
   },
 
   es: {
@@ -440,6 +461,13 @@ const I18N = {
     currency_name_SEK: "Corona sueca", currency_name_SGD: "Dólar de Singapur",
     currency_name_THB: "Baht tailandés", currency_name_TRY: "Lira turca",
     currency_name_USD: "Dólar estadounidense", currency_name_ZAR: "Rand sudafricano",
+
+    scrambler_faq_q: "¿Cómo funciona?",
+    scrambler_faq_a: "Introduce cualquier combinación de letras — comprobamos cada combinación posible en un diccionario de unas 172.000 palabras en inglés para encontrar todas las palabras válidas ocultas en ellas.",
+    currency_faq_q: "¿Cómo funciona?",
+    currency_faq_a: "Introduce un importe y elige dos divisas — el tipo de cambio en vivo se obtiene del Banco Central Europeo a través de la API gratuita frankfurter.dev y el resultado se actualiza al instante.",
+    measurement_faq_q: "¿Cómo funciona?",
+    measurement_faq_a: "Elige una categoría como longitud o peso, selecciona tus unidades e introduce un valor — la conversión se realiza al instante usando factores de conversión estándar.",
   },
 };
 

@@ -17,9 +17,9 @@
     <a class="brand" href="index.html">Scrambledamble</a>
     <div class="header-right">
       <nav class="bubble-nav">
-        <a href="#scrambler" data-i18n="nav_scrambler">Word Scrambler</a>
-        <a href="#currency" data-i18n="nav_currency">Currency Converter</a>
-        <a href="#measurement" data-i18n="nav_measurement">Unit Converter</a>
+        <a href="#scrambler"><span class="cat-icon" aria-hidden="true">🧩</span><span data-i18n="nav_scrambler">Word Scrambler</span></a>
+        <a href="#currency"><span class="cat-icon" aria-hidden="true">💰</span><span data-i18n="nav_currency">Currency Converter</span></a>
+        <a href="#measurement"><span class="cat-icon" aria-hidden="true">📐</span><span data-i18n="nav_measurement">Unit Converter</span></a>
       </nav>
       <div class="lang-switch">
         <button type="button" data-lang="en">ENG</button>
@@ -37,9 +37,13 @@
   <!-- ============ WORD SCRAMBLER ============ -->
   <section id="scrambler" class="tool-section col-left col-separated">
     <div class="intro">
-      <span class="section-badge"><span class="cat-icon" aria-hidden="true">🔤</span><span data-i18n="scrambler_badge">Word Scrambler</span></span>
+      <span class="section-badge"><span class="cat-icon" aria-hidden="true">🧩</span><span data-i18n="scrambler_badge">Word Scrambler</span></span>
       <h1 class="page-title" data-i18n="scrambler_title">Find valid words from your letters</h1>
       <p class="page-subtitle" data-i18n="scrambler_subtitle">Type in a jumble of letters and find every valid word you can make from them.</p>
+      <details class="faq">
+        <summary data-i18n="scrambler_faq_q">How does this work?</summary>
+        <p data-i18n="scrambler_faq_a">Type any letters and we'll check every possible combination against a dictionary of about 172,000 English words to find every valid word hidden inside them.</p>
+      </details>
     </div>
 
     <div class="card" id="scrambler-card">
@@ -90,9 +94,13 @@
   <!-- ============ CURRENCY CONVERTER ============ -->
   <section id="currency" class="tool-section col-right">
     <div class="intro">
-      <span class="section-badge"><span class="cat-icon" aria-hidden="true">💱</span><span data-i18n="currency_badge">Currency Converter</span></span>
+      <span class="section-badge"><span class="cat-icon" aria-hidden="true">💰</span><span data-i18n="currency_badge">Currency Converter</span></span>
       <h1 class="page-title" data-i18n="currency_title">Convert between currencies</h1>
       <p class="page-subtitle" data-i18n="currency_subtitle">Live exchange rates, updated daily.</p>
+      <details class="faq">
+        <summary data-i18n="currency_faq_q">How does this work?</summary>
+        <p data-i18n="currency_faq_a">Enter an amount and choose two currencies — the live rate is fetched from the European Central Bank via the free frankfurter.dev API and the result updates instantly.</p>
+      </details>
     </div>
 
     <div class="card" id="currency-card">
@@ -133,6 +141,10 @@
         <button type="button" data-category="volume" class="active"><span class="cat-icon" aria-hidden="true">💧</span><span data-i18n="cat_volume">Volume</span></button>
         <button type="button" data-category="speed"><span class="cat-icon" aria-hidden="true">⚡</span><span data-i18n="cat_speed">Speed</span></button>
       </div>
+      <details class="faq">
+        <summary data-i18n="measurement_faq_q">How does this work?</summary>
+        <p data-i18n="measurement_faq_a">Pick a category like length or weight, choose your units, and enter a value — the conversion happens instantly using standard conversion factors.</p>
+      </details>
     </div>
 
     <div class="card" id="measurement-card">

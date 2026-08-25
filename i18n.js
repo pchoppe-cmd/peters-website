@@ -50,7 +50,7 @@ const I18N = {
     cat_volume: "Volume",
     cat_speed: "Speed",
 
-    footer_tagline: "Built for all people of the internet · word list: ENABLE1 (~172,000 words) · currency rates via frankfurter.app",
+    footer_tagline: "Built for all people of the internet · multilingual word dictionaries · currency rates via frankfurter.app",
     footer_privacy: "Privacy Policy",
     footer_about: "About",
 
@@ -61,7 +61,7 @@ const I18N = {
     about_why_heading: "Why it exists",
     about_why_text: "It started as a small personal project — a single page with a few genuinely useful tools, built to be fast, free, and free of clutter.",
     about_built_heading: "How it's built",
-    about_built_html: "Plain HTML, CSS, and JavaScript — no frameworks, no tracking scripts, no build step. The Word Scrambler runs entirely offline using a ~172,000-word dictionary (ENABLE1). The Currency Converter fetches live rates from the free <a href=\"https://frankfurter.dev\" target=\"_blank\" rel=\"noopener\">frankfurter.dev</a> API.",
+    about_built_html: "Plain HTML, CSS, and JavaScript — no frameworks, no tracking scripts, no build step. The Word Scrambler works fully offline in English, and downloads a small dictionary the first time you switch it to German, French, or Spanish. The Currency Converter fetches live rates from the free <a href=\"https://frankfurter.dev\" target=\"_blank\" rel=\"noopener\">frankfurter.dev</a> API.",
     about_feedback_heading: "Feedback",
     about_feedback_html: "Spotted a bug or have an idea for another tool? Get in touch at <a href=\"mailto:pchoppetech@gmail.com\">pchoppetech@gmail.com</a>.",
 
@@ -167,7 +167,7 @@ const I18N = {
     cat_volume: "Volumen",
     cat_speed: "Geschwindigkeit",
 
-    footer_tagline: "Für alle Menschen im Internet gemacht · Wortliste: ENABLE1 (~172.000 Wörter) · Wechselkurse via frankfurter.app",
+    footer_tagline: "Für alle Menschen im Internet gemacht · mehrsprachige Wörterbücher · Wechselkurse via frankfurter.app",
     footer_privacy: "Datenschutz",
     footer_about: "Über uns",
 
@@ -178,7 +178,7 @@ const I18N = {
     about_why_heading: "Warum es das gibt",
     about_why_text: "Es begann als kleines persönliches Projekt — eine einzige Seite mit ein paar wirklich nützlichen Tools, schnell, kostenlos und ohne Schnickschnack.",
     about_built_heading: "Wie es gebaut ist",
-    about_built_html: "Reines HTML, CSS und JavaScript — keine Frameworks, keine Tracking-Skripte, kein Build-Prozess. Der Buchstabensalat läuft komplett offline mit einem Wörterbuch aus rund 172.000 Wörtern (ENABLE1). Der Währungsrechner ruft aktuelle Kurse über die kostenlose <a href=\"https://frankfurter.dev\" target=\"_blank\" rel=\"noopener\">frankfurter.dev</a>-API ab.",
+    about_built_html: "Reines HTML, CSS und JavaScript — keine Frameworks, keine Tracking-Skripte, kein Build-Prozess. Der Buchstabensalat funktioniert auf Englisch komplett offline und lädt beim ersten Wechsel zu Deutsch, Französisch oder Spanisch ein kleines Wörterbuch nach. Der Währungsrechner ruft aktuelle Kurse über die kostenlose <a href=\"https://frankfurter.dev\" target=\"_blank\" rel=\"noopener\">frankfurter.dev</a>-API ab.",
     about_feedback_heading: "Feedback",
     about_feedback_html: "Einen Fehler gefunden oder eine Idee für ein weiteres Tool? Melde dich unter <a href=\"mailto:pchoppetech@gmail.com\">pchoppetech@gmail.com</a>.",
 
@@ -229,7 +229,7 @@ const I18N = {
     currency_name_USD: "US-Dollar", currency_name_ZAR: "Südafrikanischer Rand",
 
     scrambler_faq_q: "Wie funktioniert das?",
-    scrambler_faq_a: "Gib beliebige Buchstaben ein — wir prüfen jede mögliche Kombination gegen ein Wörterbuch mit rund 172.000 englischen Wörtern, um jedes darin versteckte gültige Wort zu finden.",
+    scrambler_faq_a: "Gib beliebige Buchstaben ein — wir prüfen jede mögliche Kombination gegen ein Wörterbuch mit rund 230.000 deutschen Wörtern, um jedes darin versteckte gültige Wort zu finden.",
     currency_faq_q: "Wie funktioniert das?",
     currency_faq_a: "Gib einen Betrag ein und wähle zwei Währungen — der aktuelle Kurs wird live von der Europäischen Zentralbank über die kostenlose frankfurter.dev-API abgerufen, das Ergebnis aktualisiert sich sofort.",
     measurement_faq_q: "Wie funktioniert das?",
@@ -284,7 +284,7 @@ const I18N = {
     cat_volume: "Volume",
     cat_speed: "Vitesse",
 
-    footer_tagline: "Conçu pour tous les internautes · liste de mots : ENABLE1 (~172 000 mots) · taux de change via frankfurter.app",
+    footer_tagline: "Conçu pour tous les internautes · dictionnaires multilingues · taux de change via frankfurter.app",
     footer_privacy: "Politique de confidentialité",
     footer_about: "À propos",
 
@@ -295,7 +295,7 @@ const I18N = {
     about_why_heading: "Pourquoi ce site existe",
     about_why_text: "Tout a commencé comme un petit projet personnel — une seule page avec quelques outils vraiment utiles, conçue pour être rapide, gratuite et sans fioritures.",
     about_built_heading: "Comment il est construit",
-    about_built_html: "Simple HTML, CSS et JavaScript — sans frameworks, sans scripts de suivi, sans étape de build. L'Anagrammeur fonctionne entièrement hors ligne grâce à un dictionnaire d'environ 172 000 mots (ENABLE1). Le Convertisseur de devises récupère les taux en direct via l'API gratuite <a href=\"https://frankfurter.dev\" target=\"_blank\" rel=\"noopener\">frankfurter.dev</a>.",
+    about_built_html: "Simple HTML, CSS et JavaScript — sans frameworks, sans scripts de suivi, sans étape de build. L'Anagrammeur fonctionne entièrement hors ligne en anglais, et télécharge un petit dictionnaire lors du premier passage en allemand, français ou espagnol. Le Convertisseur de devises récupère les taux en direct via l'API gratuite <a href=\"https://frankfurter.dev\" target=\"_blank\" rel=\"noopener\">frankfurter.dev</a>.",
     about_feedback_heading: "Retour d'expérience",
     about_feedback_html: "Vous avez trouvé un bug ou une idée pour un autre outil ? Contactez-nous à <a href=\"mailto:pchoppetech@gmail.com\">pchoppetech@gmail.com</a>.",
 
@@ -346,7 +346,7 @@ const I18N = {
     currency_name_USD: "Dollar américain", currency_name_ZAR: "Rand sud-africain",
 
     scrambler_faq_q: "Comment ça marche ?",
-    scrambler_faq_a: "Entrez n'importe quelles lettres — nous vérifions chaque combinaison possible dans un dictionnaire d'environ 172 000 mots anglais pour trouver tous les mots valides qui s'y cachent.",
+    scrambler_faq_a: "Entrez n'importe quelles lettres — nous vérifions chaque combinaison possible dans un dictionnaire d'environ 330 000 mots français pour trouver tous les mots valides qui s'y cachent.",
     currency_faq_q: "Comment ça marche ?",
     currency_faq_a: "Entrez un montant et choisissez deux devises — le taux en direct est récupéré auprès de la Banque centrale européenne via l'API gratuite frankfurter.dev, le résultat se met à jour instantanément.",
     measurement_faq_q: "Comment ça marche ?",
@@ -401,7 +401,7 @@ const I18N = {
     cat_volume: "Volumen",
     cat_speed: "Velocidad",
 
-    footer_tagline: "Creado para toda la gente de internet · lista de palabras: ENABLE1 (~172.000 palabras) · tipos de cambio vía frankfurter.app",
+    footer_tagline: "Creado para toda la gente de internet · diccionarios multilingües · tipos de cambio vía frankfurter.app",
     footer_privacy: "Política de privacidad",
     footer_about: "Acerca de",
 
@@ -412,7 +412,7 @@ const I18N = {
     about_why_heading: "Por qué existe",
     about_why_text: "Empezó como un pequeño proyecto personal — una sola página con algunas herramientas realmente útiles, pensada para ser rápida, gratuita y sin complicaciones.",
     about_built_heading: "Cómo está construido",
-    about_built_html: "HTML, CSS y JavaScript sencillos — sin frameworks, sin scripts de seguimiento, sin proceso de compilación. La Sopa de letras funciona completamente sin conexión usando un diccionario de unas 172.000 palabras (ENABLE1). El Conversor de divisas obtiene tipos de cambio en vivo de la API gratuita <a href=\"https://frankfurter.dev\" target=\"_blank\" rel=\"noopener\">frankfurter.dev</a>.",
+    about_built_html: "HTML, CSS y JavaScript sencillos — sin frameworks, sin scripts de seguimiento, sin proceso de compilación. La Sopa de letras funciona completamente sin conexión en inglés, y descarga un pequeño diccionario la primera vez que cambias a alemán, francés o español. El Conversor de divisas obtiene tipos de cambio en vivo de la API gratuita <a href=\"https://frankfurter.dev\" target=\"_blank\" rel=\"noopener\">frankfurter.dev</a>.",
     about_feedback_heading: "Comentarios",
     about_feedback_html: "¿Encontraste un error o tienes una idea para otra herramienta? Escríbenos a <a href=\"mailto:pchoppetech@gmail.com\">pchoppetech@gmail.com</a>.",
 
@@ -463,7 +463,7 @@ const I18N = {
     currency_name_USD: "Dólar estadounidense", currency_name_ZAR: "Rand sudafricano",
 
     scrambler_faq_q: "¿Cómo funciona?",
-    scrambler_faq_a: "Introduce cualquier combinación de letras — comprobamos cada combinación posible en un diccionario de unas 172.000 palabras en inglés para encontrar todas las palabras válidas ocultas en ellas.",
+    scrambler_faq_a: "Introduce cualquier combinación de letras — comprobamos cada combinación posible en un diccionario de unas 635.000 palabras en español para encontrar todas las palabras válidas ocultas en ellas.",
     currency_faq_q: "¿Cómo funciona?",
     currency_faq_a: "Introduce un importe y elige dos divisas — el tipo de cambio en vivo se obtiene del Banco Central Europeo a través de la API gratuita frankfurter.dev y el resultado se actualiza al instante.",
     measurement_faq_q: "¿Cómo funciona?",

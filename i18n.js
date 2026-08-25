@@ -49,6 +49,7 @@ const I18N = {
     cat_temperature: "Temperature",
     cat_volume: "Volume",
     cat_speed: "Speed",
+    cat_fuel: "Fuel Economy",
 
     footer_tagline: "Built for all people of the internet · multilingual word dictionaries · currency rates via frankfurter.app",
     footer_privacy: "Privacy Policy",
@@ -94,6 +95,7 @@ const I18N = {
     unit_cup_us: "Cups (US)", unit_fluid_ounce_us: "Fluid ounces (US)",
     unit_gallon_uk: "Gallons (UK)", unit_pint_uk: "Pints (UK)", unit_fluid_ounce_uk: "Fluid ounces (UK)",
     unit_kmh: "km/h", unit_mph: "mph", unit_ms: "m/s", unit_knot: "Knots",
+    unit_mpg_uk: "MPG (UK)", unit_mpg_us: "MPG (US)", unit_l_100km: "L/100km",
 
     currency_name_AUD: "Australian Dollar", currency_name_BRL: "Brazilian Real",
     currency_name_CAD: "Canadian Dollar", currency_name_CHF: "Swiss Franc",
@@ -166,6 +168,7 @@ const I18N = {
     cat_temperature: "Temperatur",
     cat_volume: "Volumen",
     cat_speed: "Geschwindigkeit",
+    cat_fuel: "Kraftstoffverbrauch",
 
     footer_tagline: "Für alle Menschen im Internet gemacht · mehrsprachige Wörterbücher · Wechselkurse via frankfurter.app",
     footer_privacy: "Datenschutz",
@@ -211,6 +214,7 @@ const I18N = {
     unit_cup_us: "Cups (US)", unit_fluid_ounce_us: "Flüssigunzen (US)",
     unit_gallon_uk: "Gallonen (UK)", unit_pint_uk: "Pints (UK)", unit_fluid_ounce_uk: "Flüssigunzen (UK)",
     unit_kmh: "km/h", unit_mph: "mph", unit_ms: "m/s", unit_knot: "Knoten",
+    unit_mpg_uk: "MPG (UK)", unit_mpg_us: "MPG (US)", unit_l_100km: "L/100km",
 
     currency_name_AUD: "Australischer Dollar", currency_name_BRL: "Brasilianischer Real",
     currency_name_CAD: "Kanadischer Dollar", currency_name_CHF: "Schweizer Franken",
@@ -283,6 +287,7 @@ const I18N = {
     cat_temperature: "Température",
     cat_volume: "Volume",
     cat_speed: "Vitesse",
+    cat_fuel: "Consommation de carburant",
 
     footer_tagline: "Conçu pour tous les internautes · dictionnaires multilingues · taux de change via frankfurter.app",
     footer_privacy: "Politique de confidentialité",
@@ -328,6 +333,7 @@ const I18N = {
     unit_cup_us: "Tasses (US)", unit_fluid_ounce_us: "Onces liquides (US)",
     unit_gallon_uk: "Gallons (UK)", unit_pint_uk: "Pintes (UK)", unit_fluid_ounce_uk: "Onces liquides (UK)",
     unit_kmh: "km/h", unit_mph: "mph", unit_ms: "m/s", unit_knot: "Nœuds",
+    unit_mpg_uk: "MPG (UK)", unit_mpg_us: "MPG (US)", unit_l_100km: "L/100km",
 
     currency_name_AUD: "Dollar australien", currency_name_BRL: "Real brésilien",
     currency_name_CAD: "Dollar canadien", currency_name_CHF: "Franc suisse",
@@ -400,6 +406,7 @@ const I18N = {
     cat_temperature: "Temperatura",
     cat_volume: "Volumen",
     cat_speed: "Velocidad",
+    cat_fuel: "Consumo de combustible",
 
     footer_tagline: "Creado para toda la gente de internet · diccionarios multilingües · tipos de cambio vía frankfurter.app",
     footer_privacy: "Política de privacidad",
@@ -445,6 +452,7 @@ const I18N = {
     unit_cup_us: "Tazas (US)", unit_fluid_ounce_us: "Onzas líquidas (US)",
     unit_gallon_uk: "Galones (UK)", unit_pint_uk: "Pintas (UK)", unit_fluid_ounce_uk: "Onzas líquidas (UK)",
     unit_kmh: "km/h", unit_mph: "mph", unit_ms: "m/s", unit_knot: "Nudos",
+    unit_mpg_uk: "MPG (UK)", unit_mpg_us: "MPG (US)", unit_l_100km: "L/100km",
 
     currency_name_AUD: "Dólar australiano", currency_name_BRL: "Real brasileño",
     currency_name_CAD: "Dólar canadiense", currency_name_CHF: "Franco suizo",

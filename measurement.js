@@ -73,6 +73,25 @@ const UNIT_CATEGORIES = {
     defaultFrom: 'mph',
     defaultTo: 'kmh',
   },
+  fuel: {
+    label: 'Fuel Economy',
+    // no simple factors here — mpg and L/100km are inversely related,
+    // handled specially in convertValue()
+    units: {
+      mpg_uk: { label: 'MPG (UK)' },
+      mpg_us: { label: 'MPG (US)' },
+      l_100km: { label: 'L/100km' },
+    },
+    defaultFrom: 'mpg_uk',
+    defaultTo: 'l_100km',
+  },
+};
+
+// Constants for converting each MPG variant to/from L/100km (reciprocal relationship):
+// L/100km = CONST / MPG, and MPG = CONST / L/100km.
+const MPG_TO_L100KM_CONST = {
+  mpg_us: 235.214583, // 100 * litres-per-US-gallon / km-per-mile
+  mpg_uk: 282.480936, // 100 * litres-per-UK-gallon / km-per-mile
 };
 
 const categoryTabs = document.getElementById('unit-category-tabs');
@@ -99,9 +118,24 @@ function fromCelsius(value, unit) {
   if (unit === 'kelvin') return value + 273.15;
 }
 
+function toL100km(value, unit) {
+  if (unit === 'l_100km') return value;
+  if (value === 0) return Infinity;
+  return MPG_TO_L100KM_CONST[unit] / value;
+}
+
+function fromL100km(value, unit) {
+  if (unit === 'l_100km') return value;
+  if (value === 0) return Infinity;
+  return MPG_TO_L100KM_CONST[unit] / value;
+}
+
 function convertValue(value, fromUnit, toUnit, category) {
   if (category === 'temperature') {
     return fromCelsius(toCelsius(value, fromUnit), toUnit);
+  }
+  if (category === 'fuel') {
+    return fromL100km(toL100km(value, fromUnit), toUnit);
   }
   const units = UNIT_CATEGORIES[category].units;
   const baseValue = value * units[fromUnit].factor;

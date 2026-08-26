@@ -85,6 +85,17 @@ const UNIT_CATEGORIES = {
     defaultFrom: 'mpg_uk',
     defaultTo: 'l_100km',
   },
+  power: {
+    label: 'Power',
+    // factors convert 1 unit -> watts (the base unit)
+    units: {
+      kilowatt: { label: 'Kilowatts (kW)', factor: 1000 },
+      horsepower: { label: 'Horsepower (HP)', factor: 745.699872 },
+      watt: { label: 'Watts (W)', factor: 1 },
+    },
+    defaultFrom: 'horsepower',
+    defaultTo: 'kilowatt',
+  },
 };
 
 // Constants for converting each MPG variant to/from L/100km (reciprocal relationship):

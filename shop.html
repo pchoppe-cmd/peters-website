@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" translate="no">
+<head>
+<meta charset="UTF-8">
+<meta name="google" content="notranslate">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shop — Scrambledamble</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="index.html">Scrambledamble</a>
+    <div class="header-right">
+      <nav class="bubble-nav">
+        <a href="index.html" data-i18n="nav_back">Back to site</a>
+      </nav>
+      <div class="lang-switch">
+        <button type="button" data-lang="en">ENG</button>
+        <button type="button" data-lang="de">GER</button>
+        <button type="button" data-lang="fr">FR</button>
+        <button type="button" data-lang="es">ES</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div style="max-width:960px; margin:0 auto;">
+    <span class="section-badge"><span class="cat-icon" aria-hidden="true">🛍️</span><span data-i18n="shop_badge">Shop</span></span>
+    <h1 class="page-title" data-i18n="shop_title">The Scrambledamble Shop</h1>
+    <p class="page-subtitle" data-i18n="shop_subtitle">A few fun little things, coming soon.</p>
+
+    <div class="shop-banner">
+      <span class="cat-icon" aria-hidden="true">🚧</span>
+      <span data-i18n="shop_banner">This is a preview — checkout isn't live yet. Real products and prices are on the way!</span>
+    </div>
+
+    <div class="shop-grid">
+      <div class="card shop-item">
+        <div class="shop-item-icon" aria-hidden="true">⏳</div>
+        <h3 class="shop-item-name" data-i18n="shop_sandtimer_name">5-Minute Sand Timer</h3>
+        <p class="shop-item-desc" data-i18n="shop_sandtimer_desc">A simple hourglass for tea, games, or beating procrastination one grain at a time.</p>
+        <div class="shop-item-price">£12.00</div>
+        <button type="button" class="shop-item-btn" disabled data-i18n="shop_coming_soon">Coming soon</button>
+      </div>
+
+      <div class="card shop-item">
+        <div class="shop-item-icon" aria-hidden="true">🔦</div>
+        <h3 class="shop-item-name" data-i18n="shop_torch_name">Pocket Torch</h3>
+        <p class="shop-item-desc" data-i18n="shop_torch_desc">A compact, rechargeable torch small enough for a pocket, bright enough to actually use.</p>
+        <div class="shop-item-price">£15.00</div>
+        <button type="button" class="shop-item-btn" disabled data-i18n="shop_coming_soon">Coming soon</button>
+      </div>
+
+      <div class="card shop-item">
+        <div class="shop-item-icon" aria-hidden="true">🔗</div>
+        <h3 class="shop-item-name" data-i18n="shop_puzzle_name">Metal Disentanglement Puzzle</h3>
+        <p class="shop-item-desc" data-i18n="shop_puzzle_desc">Untangle the interlocking metal pieces to solve this classic brain teaser.</p>
+        <div class="shop-item-price">£8.00</div>
+        <button type="button" class="shop-item-btn" disabled data-i18n="shop_coming_soon">Coming soon</button>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <span data-i18n="footer_tagline">Built for all people of the internet · multilingual word dictionaries · currency rates via frankfurter.app</span>
+    <div class="footer-links">
+      <a href="privacy.html" data-i18n="footer_privacy">Privacy Policy</a>
+      <a href="about.html" data-i18n="footer_about">About</a>
+    </div>
+  </div>
+</footer>
+
+<script src="i18n.js"></script>
+
+<!-- Cloudflare Web Analytics -->
+<script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "ababd76bf6c34709a28835e6ab1218bd"}'></script>
+<!-- End Cloudflare Web Analytics -->
+</body>
+</html>

@@ -533,6 +533,10 @@ button:disabled { opacity: 0.6; cursor: not-allowed; }
   color: var(--muted);
 }
 
+.shop-buy-button {
+  width: 100%;
+}
+
 .error {
   color: var(--danger);
   font-size: 0.9rem;

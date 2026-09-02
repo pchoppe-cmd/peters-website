@@ -97,10 +97,102 @@ function render(words) {
     const chip = document.createElement('span');
     chip.className = 'word-chip';
     chip.textContent = w;
+    chip.title = window.t('scrambler_def_hint');
+    chip.setAttribute('role', 'button');
+    chip.setAttribute('tabindex', '0');
+    chip.setAttribute('aria-expanded', 'false');
     frag.appendChild(chip);
   }
   wordListEl.appendChild(frag);
 }
+
+// Definitions: fetched on demand (one word at a time, on click) rather than
+// for every result up front — result lists can easily have 50+ words, and
+// eagerly fetching all of them would be slow and unfriendly to the free API.
+
+// dictionaryapi.dev's language codes happen to match this site's own (en/de/fr/es).
+const definitionCache = new Map(); // `${lang}:${word}` -> {pos, text} | null (null = confirmed no entry)
+
+async function fetchDefinition(word, lang) {
+  const key = `${lang}:${word}`;
+  if (definitionCache.has(key)) return { result: definitionCache.get(key), errored: false };
+  try {
+    const res = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/${lang}/${encodeURIComponent(word)}`);
+    if (!res.ok) {
+      definitionCache.set(key, null);
+      return { result: null, errored: false };
+    }
+    const data = await res.json();
+    const meaning = data[0] && data[0].meanings && data[0].meanings[0];
+    const text = meaning && meaning.definitions && meaning.definitions[0] && meaning.definitions[0].definition;
+    const result = text ? { pos: meaning.partOfSpeech || '', text } : null;
+    definitionCache.set(key, result);
+    return { result, errored: false };
+  } catch (err) {
+    // Network/CORS failure — don't cache, so the user can retry by clicking again.
+    return { result: null, errored: true };
+  }
+}
+
+function closeDefinition(chip) {
+  chip.classList.remove('is-open');
+  chip.setAttribute('aria-expanded', 'false');
+  const next = chip.nextElementSibling;
+  if (next && next.classList.contains('word-definition')) next.remove();
+}
+
+async function toggleDefinition(chip) {
+  if (chip.classList.contains('is-open')) {
+    closeDefinition(chip);
+    return;
+  }
+  // Only one definition open at a time, to keep the results readable.
+  wordListEl.querySelectorAll('.word-chip.is-open').forEach(closeDefinition);
+
+  chip.classList.add('is-open');
+  chip.setAttribute('aria-expanded', 'true');
+  const panel = document.createElement('div');
+  panel.className = 'word-definition';
+  panel.textContent = window.t('scrambler_def_loading');
+  chip.after(panel);
+
+  const lang = window.getLang();
+  const word = chip.textContent;
+  const { result, errored } = await fetchDefinition(word, lang);
+
+  // The panel may have been removed already (chip re-clicked, new search run,
+  // or language changed mid-flight) — bail out rather than resurrecting it.
+  if (!panel.isConnected) return;
+
+  panel.innerHTML = '';
+  if (errored) {
+    panel.textContent = window.t('scrambler_def_error');
+  } else if (!result) {
+    panel.textContent = window.t('scrambler_def_not_found');
+  } else {
+    if (result.pos) {
+      const posEl = document.createElement('span');
+      posEl.className = 'word-definition-pos';
+      posEl.textContent = result.pos;
+      panel.appendChild(posEl);
+    }
+    panel.appendChild(document.createTextNode(result.text));
+  }
+}
+
+wordListEl.addEventListener('click', (e) => {
+  const chip = e.target.closest('.word-chip');
+  if (!chip) return;
+  toggleDefinition(chip);
+});
+
+wordListEl.addEventListener('keydown', (e) => {
+  if (e.key !== 'Enter' && e.key !== ' ') return;
+  const chip = e.target.closest('.word-chip');
+  if (!chip) return;
+  e.preventDefault();
+  toggleDefinition(chip);
+});
 
 async function runSearch() {
   errorEl.textContent = '';

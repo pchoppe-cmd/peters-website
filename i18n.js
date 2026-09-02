@@ -25,6 +25,10 @@ const I18N = {
     scrambler_no_words: "No valid words found for those letters.",
     scrambler_word_found_singular: "1 word found",
     scrambler_words_found: "{n} words found",
+    scrambler_def_hint: "Click a word for its definition",
+    scrambler_def_loading: "Loading definition…",
+    scrambler_def_not_found: "No definition found.",
+    scrambler_def_error: "Couldn't load definition — try again.",
 
     currency_badge: "Currency Converter",
     currency_title: "Convert between currencies",
@@ -159,6 +163,10 @@ const I18N = {
     scrambler_no_words: "Keine gültigen Wörter für diese Buchstaben gefunden.",
     scrambler_word_found_singular: "1 Wort gefunden",
     scrambler_words_found: "{n} Wörter gefunden",
+    scrambler_def_hint: "Klicke auf ein Wort für die Definition",
+    scrambler_def_loading: "Definition wird geladen…",
+    scrambler_def_not_found: "Keine Definition gefunden.",
+    scrambler_def_error: "Definition konnte nicht geladen werden — bitte erneut versuchen.",
 
     currency_badge: "Währungsrechner",
     currency_title: "Währungen umrechnen",
@@ -293,6 +301,10 @@ const I18N = {
     scrambler_no_words: "Aucun mot valide trouvé pour ces lettres.",
     scrambler_word_found_singular: "1 mot trouvé",
     scrambler_words_found: "{n} mots trouvés",
+    scrambler_def_hint: "Cliquez sur un mot pour voir sa définition",
+    scrambler_def_loading: "Chargement de la définition…",
+    scrambler_def_not_found: "Aucune définition trouvée.",
+    scrambler_def_error: "Impossible de charger la définition — réessayez.",
 
     currency_badge: "Convertisseur de devises",
     currency_title: "Convertir entre devises",
@@ -427,6 +439,10 @@ const I18N = {
     scrambler_no_words: "No se encontraron palabras válidas con esas letras.",
     scrambler_word_found_singular: "1 palabra encontrada",
     scrambler_words_found: "{n} palabras encontradas",
+    scrambler_def_hint: "Haz clic en una palabra para ver su definición",
+    scrambler_def_loading: "Cargando definición…",
+    scrambler_def_not_found: "No se encontró ninguna definición.",
+    scrambler_def_error: "No se pudo cargar la definición — inténtalo de nuevo.",
 
     currency_badge: "Conversor de divisas",
     currency_title: "Convertir entre divisas",

@@ -155,15 +155,6 @@ function firstNonEmptyDefinition(entries) {
   return null;
 }
 
-// Looks up `term` on English Wiktionary and returns the first definition
-// filed under the `langKey` section of the response, if any.
-async function fetchFromWiktionary(term, langKey) {
-  const res = await fetch(`https://en.wiktionary.org/api/rest_v1/page/definition/${encodeURIComponent(term)}`);
-  if (!res.ok) return null;
-  const data = await res.json();
-  return firstNonEmptyDefinition(data[langKey]);
-}
-
 async function fetchDefinitionEn(word) {
   const res = await fetch(`https://en.wiktionary.org/api/rest_v1/page/definition/${encodeURIComponent(word)}`);
   if (!res.ok) return null;
@@ -174,13 +165,79 @@ async function fetchDefinitionEn(word) {
   return firstNonEmptyDefinition(entries);
 }
 
+// German/French/Spanish: English Wiktionary only gives the English gloss for
+// a foreign word (e.g. German "Tiger" -> "tiger"), not a definition in that
+// word's own language. To get a native-language definition we go straight
+// to that language's own Wiktionary edition instead — but its dedicated
+// REST "definition" endpoint 501s for de/fr/es (unsupported), so we fall
+// back to the plain-text "extracts" from the standard MediaWiki Action API
+// (reliable, CORS-enabled with origin=*) and pick out the first definition
+// with a per-language pattern, since each Wiktionary edition formats its
+// entries differently.
+const WIKTIONARY_HOST = { de: 'de.wiktionary.org', fr: 'fr.wiktionary.org', es: 'es.wiktionary.org' };
+
+async function fetchWiktionaryExtract(term, host) {
+  const url = `https://${host}/w/api.php?action=query&prop=extracts&titles=${encodeURIComponent(term)}&format=json&explaintext=1&exsectionformat=plain&origin=*`;
+  const res = await fetch(url);
+  if (!res.ok) return null;
+  const data = await res.json();
+  const pages = data.query && data.query.pages;
+  const page = pages && Object.values(pages)[0];
+  if (!page || page.missing !== undefined || !page.extract) return null;
+  return page.extract;
+}
+
+// German entries have an explicit "Bedeutungen:" (meanings) section
+// containing "[1] ..." numbered senses.
+function parseGermanDefinition(extract) {
+  const section = extract.match(/Bedeutungen:\n([\s\S]*?)(?:\n[A-ZÄÖÜ][^\n:]{2,60}:\n|$)/);
+  const sense = section && section[1].match(/\[1\]\s*([^\n]+)/);
+  return sense ? sense[1].trim() : null;
+}
+
+// French entries put the definition as the first line of prose right after
+// the headword/pronunciation line (which contains IPA between backslashes).
+function parseFrenchDefinition(extract) {
+  const lines = extract.split('\n').map((l) => l.trim());
+  const pronIdx = lines.findIndex((l) => /\\.+\\/.test(l));
+  if (pronIdx === -1) return null;
+  for (let i = pronIdx + 1; i < lines.length; i++) {
+    if (lines[i]) return lines[i];
+  }
+  return null;
+}
+
+// Spanish entries number each sense as "1 Category" on its own line, with
+// the actual definition on the line right after it.
+function parseSpanishDefinition(extract) {
+  const lines = extract.split('\n').map((l) => l.trim());
+  const idx = lines.findIndex((l) => /^1\s+\S/.test(l));
+  if (idx === -1) return null;
+  for (let i = idx + 1; i < lines.length; i++) {
+    if (lines[i]) return lines[i];
+  }
+  return null;
+}
+
+const DEFINITION_PARSERS = { de: parseGermanDefinition, fr: parseFrenchDefinition, es: parseSpanishDefinition };
+
 async function fetchDefinitionOther(word, lang) {
-  const result = await fetchFromWiktionary(word, lang);
-  if (result || lang !== 'de') return result;
-  // German nouns are conventionally capitalized on Wiktionary (e.g. "Tiger"),
-  // but this site's word lists store everything lowercase — retry once with
-  // the capitalized form before giving up.
-  return fetchFromWiktionary(capitalizeFirst(word), lang);
+  const host = WIKTIONARY_HOST[lang];
+  const parse = DEFINITION_PARSERS[lang];
+
+  let extract = await fetchWiktionaryExtract(word, host);
+  let text = extract && parse(extract);
+  if (!text && lang === 'de') {
+    // German nouns are conventionally capitalized on Wiktionary (e.g.
+    // "Tiger"), but this site's word lists store everything lowercase —
+    // retry once with the capitalized form before giving up.
+    extract = await fetchWiktionaryExtract(capitalizeFirst(word), host);
+    text = extract && parse(extract);
+  }
+  // No part-of-speech label here (unlike the English path) — pulling one
+  // out consistently across three differently-formatted Wiktionary editions
+  // wasn't worth the added fragility for a short preview definition.
+  return text ? { pos: '', text } : null;
 }
 
 async function fetchDefinition(word, lang) {

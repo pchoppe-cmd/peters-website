@@ -137,16 +137,31 @@ function capitalizeFirst(word) {
   return word.charAt(0).toUpperCase() + word.slice(1);
 }
 
+// Wiktionary's definitions array can start with a blank "" entry (an
+// umbrella/placeholder sense above its actual sub-definitions), so grab the
+// first genuinely non-empty one instead of assuming index 0 — scanning
+// across entries (parts of speech) too, in case the first one is all blanks.
+function firstNonEmptyDefinition(entries) {
+  if (!entries) return null;
+  for (const entry of entries) {
+    if (!entry.definitions) continue;
+    for (const def of entry.definitions) {
+      const html = def && def.definition;
+      if (html && html.trim()) {
+        return { pos: entry.partOfSpeech || '', text: stripHtml(html) };
+      }
+    }
+  }
+  return null;
+}
+
 // Looks up `term` on English Wiktionary and returns the first definition
 // filed under the `langKey` section of the response, if any.
 async function fetchFromWiktionary(term, langKey) {
   const res = await fetch(`https://en.wiktionary.org/api/rest_v1/page/definition/${encodeURIComponent(term)}`);
   if (!res.ok) return null;
   const data = await res.json();
-  const entries = data[langKey];
-  const first = entries && entries[0];
-  const defHtml = first && first.definitions && first.definitions[0] && first.definitions[0].definition;
-  return defHtml ? { pos: first.partOfSpeech || '', text: stripHtml(defHtml) } : null;
+  return firstNonEmptyDefinition(data[langKey]);
 }
 
 async function fetchDefinitionEn(word) {
@@ -156,9 +171,7 @@ async function fetchDefinitionEn(word) {
   // Prefer the English-language section; some queried words are foreign
   // terms with only non-English entries, so fall back to whatever's there.
   const entries = data.en || data[Object.keys(data)[0]];
-  const first = entries && entries[0];
-  const defHtml = first && first.definitions && first.definitions[0] && first.definitions[0].definition;
-  return defHtml ? { pos: first.partOfSpeech || '', text: stripHtml(defHtml) } : null;
+  return firstNonEmptyDefinition(entries);
 }
 
 async function fetchDefinitionOther(word, lang) {

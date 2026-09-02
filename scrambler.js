@@ -108,24 +108,53 @@ function render(words) {
 
 // Definitions: fetched on demand (one word at a time, on click) rather than
 // for every result up front — result lists can easily have 50+ words, and
-// eagerly fetching all of them would be slow and unfriendly to the free API.
+// eagerly fetching all of them would be slow and unfriendly to a free API.
+//
+// English uses Wiktionary's REST API directly (Wikimedia-hosted, reliable).
+// German/French/Spanish fall back to dictionaryapi.dev — a free, unofficial,
+// no-key API that also happens to use the same language codes as this site,
+// but has no SLA and can go down; Wiktionary's own per-language REST
+// endpoints turned out to be unsupported for de/fr/es (consistent 501s).
 
-// dictionaryapi.dev's language codes happen to match this site's own (en/de/fr/es).
 const definitionCache = new Map(); // `${lang}:${word}` -> {pos, text} | null (null = confirmed no entry)
+
+// Strips HTML tags/entities from Wiktionary's definition markup down to plain
+// text. Safe: `tmp` is never inserted into the document, only read from.
+// Definitions occasionally embed a <style> tag (e.g. for "defdate" labels)
+// whose CSS text would otherwise leak into .textContent, so drop it first.
+function stripHtml(html) {
+  const tmp = document.createElement('div');
+  tmp.innerHTML = html;
+  tmp.querySelectorAll('style, script').forEach((el) => el.remove());
+  return (tmp.textContent || '').replace(/\s+/g, ' ').trim();
+}
+
+async function fetchDefinitionEn(word) {
+  const res = await fetch(`https://en.wiktionary.org/api/rest_v1/page/definition/${encodeURIComponent(word)}`);
+  if (!res.ok) return null;
+  const data = await res.json();
+  // Prefer the English-language section; some queried words are foreign
+  // terms with only non-English entries, so fall back to whatever's there.
+  const entries = data.en || data[Object.keys(data)[0]];
+  const first = entries && entries[0];
+  const defHtml = first && first.definitions && first.definitions[0] && first.definitions[0].definition;
+  return defHtml ? { pos: first.partOfSpeech || '', text: stripHtml(defHtml) } : null;
+}
+
+async function fetchDefinitionOther(word, lang) {
+  const res = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/${lang}/${encodeURIComponent(word)}`);
+  if (!res.ok) return null;
+  const data = await res.json();
+  const meaning = data[0] && data[0].meanings && data[0].meanings[0];
+  const text = meaning && meaning.definitions && meaning.definitions[0] && meaning.definitions[0].definition;
+  return text ? { pos: meaning.partOfSpeech || '', text } : null;
+}
 
 async function fetchDefinition(word, lang) {
   const key = `${lang}:${word}`;
   if (definitionCache.has(key)) return { result: definitionCache.get(key), errored: false };
   try {
-    const res = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/${lang}/${encodeURIComponent(word)}`);
-    if (!res.ok) {
-      definitionCache.set(key, null);
-      return { result: null, errored: false };
-    }
-    const data = await res.json();
-    const meaning = data[0] && data[0].meanings && data[0].meanings[0];
-    const text = meaning && meaning.definitions && meaning.definitions[0] && meaning.definitions[0].definition;
-    const result = text ? { pos: meaning.partOfSpeech || '', text } : null;
+    const result = lang === 'en' ? await fetchDefinitionEn(word) : await fetchDefinitionOther(word, lang);
     definitionCache.set(key, result);
     return { result, errored: false };
   } catch (err) {

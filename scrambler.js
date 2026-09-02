@@ -110,11 +110,15 @@ function render(words) {
 // for every result up front — result lists can easily have 50+ words, and
 // eagerly fetching all of them would be slow and unfriendly to a free API.
 //
-// English uses Wiktionary's REST API directly (Wikimedia-hosted, reliable).
-// German/French/Spanish fall back to dictionaryapi.dev — a free, unofficial,
-// no-key API that also happens to use the same language codes as this site,
-// but has no SLA and can go down; Wiktionary's own per-language REST
-// endpoints turned out to be unsupported for de/fr/es (consistent 501s).
+// All languages go through English Wiktionary's REST API (Wikimedia-hosted,
+// reliable) rather than a third-party dictionary API — en.wiktionary.org
+// documents foreign-language words too, keyed by language code in the
+// response (e.g. "de", "fr", "es"). This site previously used
+// dictionaryapi.dev for non-English lookups, but it turned out to have a
+// sustained outage (confirmed via direct, repeated server-side timeouts,
+// not just browser flakiness), and per-language Wiktionary REST endpoints
+// (de.wiktionary.org, etc.) consistently returned 501s. A single reliable
+// source beats juggling two unreliable ones.
 
 const definitionCache = new Map(); // `${lang}:${word}` -> {pos, text} | null (null = confirmed no entry)
 
@@ -127,6 +131,22 @@ function stripHtml(html) {
   tmp.innerHTML = html;
   tmp.querySelectorAll('style, script').forEach((el) => el.remove());
   return (tmp.textContent || '').replace(/\s+/g, ' ').trim();
+}
+
+function capitalizeFirst(word) {
+  return word.charAt(0).toUpperCase() + word.slice(1);
+}
+
+// Looks up `term` on English Wiktionary and returns the first definition
+// filed under the `langKey` section of the response, if any.
+async function fetchFromWiktionary(term, langKey) {
+  const res = await fetch(`https://en.wiktionary.org/api/rest_v1/page/definition/${encodeURIComponent(term)}`);
+  if (!res.ok) return null;
+  const data = await res.json();
+  const entries = data[langKey];
+  const first = entries && entries[0];
+  const defHtml = first && first.definitions && first.definitions[0] && first.definitions[0].definition;
+  return defHtml ? { pos: first.partOfSpeech || '', text: stripHtml(defHtml) } : null;
 }
 
 async function fetchDefinitionEn(word) {
@@ -142,12 +162,12 @@ async function fetchDefinitionEn(word) {
 }
 
 async function fetchDefinitionOther(word, lang) {
-  const res = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/${lang}/${encodeURIComponent(word)}`);
-  if (!res.ok) return null;
-  const data = await res.json();
-  const meaning = data[0] && data[0].meanings && data[0].meanings[0];
-  const text = meaning && meaning.definitions && meaning.definitions[0] && meaning.definitions[0].definition;
-  return text ? { pos: meaning.partOfSpeech || '', text } : null;
+  const result = await fetchFromWiktionary(word, lang);
+  if (result || lang !== 'de') return result;
+  // German nouns are conventionally capitalized on Wiktionary (e.g. "Tiger"),
+  // but this site's word lists store everything lowercase — retry once with
+  // the capitalized form before giving up.
+  return fetchFromWiktionary(capitalizeFirst(word), lang);
 }
 
 async function fetchDefinition(word, lang) {

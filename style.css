@@ -21,10 +21,13 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #24273b;
+    /* Body/page background lightened to a softer, more neutral slate —
+       header and cards keep the original --panel navy so the top bar
+       (and card chrome) reads unchanged against the lighter body. */
+    --bg: #45465c;
     --panel: #2b2e42;
     --text: #eef0f6;
-    --muted: #a8afc2;
+    --muted: #b7bccf;
     --border: #3d4159;
     --accent: #818cf8;
     --accent-hover: #a5b4fc;
@@ -32,11 +35,11 @@
     --link: #60a5fa;
     --link-hover: #93c5fd;
     --shadow: 0 3px 6px rgba(0, 0, 0, 0.4), 0 14px 32px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.09), inset 0 -1px 0 rgba(0, 0, 0, 0.2);
-    --top-light: linear-gradient(180deg, rgba(255, 255, 255, 0.07), transparent 26%);
-    --vignette: radial-gradient(ellipse 1300px 850px at 50% 30%, transparent 32%, rgba(0, 0, 0, 0.45) 150%);
-    --glow-1: radial-gradient(ellipse 900px 520px at 12% -12%, rgba(129, 140, 248, 0.24), transparent 60%);
-    --glow-2: radial-gradient(ellipse 800px 600px at 100% 8%, rgba(244, 114, 182, 0.16), transparent 55%);
-    --noise: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.4' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.2 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    --top-light: linear-gradient(180deg, rgba(255, 255, 255, 0.06), transparent 26%);
+    --vignette: radial-gradient(ellipse 1300px 850px at 50% 30%, transparent 32%, rgba(0, 0, 0, 0.28) 150%);
+    --glow-1: radial-gradient(ellipse 900px 520px at 12% -12%, rgba(129, 140, 248, 0.16), transparent 60%);
+    --glow-2: radial-gradient(ellipse 800px 600px at 100% 8%, rgba(244, 114, 182, 0.1), transparent 55%);
+    --noise: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.4' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   }
 }
 
